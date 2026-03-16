@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skirt Collection - Elegant Styles for Every Occasion</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b9d;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f8d7da" width="1200" height="600"/><path fill="%23e9c46a" d="M0 300 Q300 100 600 300 T1200 300 V600 H0 Z"/><circle fill="%23f4a261" cx="400" cy="250" r="80"/><circle fill="%23e76f51" cx="800" cy="200" r="60"/></svg>');
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b9d;
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .cta-button:hover {
+            background: #ff1493;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255,107,157,0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #ff6b9d;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skirt-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .skirt-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .skirt-image {
+            height: 300px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef, #ff9a9e);
+            background-size: 400% 400%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        .skirt-image::before {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-top: 30px solid white;
+        }
+
+        .skirt-info {
+            padding: 1.5rem;
+        }
+
+        .skirt-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b9d;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            background: #ff6b9d;
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background: #ff1493;
+        }
+
+        .features {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            padding: 1rem;
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: #ff6b9d;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">裙子汇 Skirt Collection</a>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#collection">裙子系列</a></li>
+                <li><a href="#features">特色</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>优雅裙装，定义女性魅力</h1>
+            <p>探索最新裙装潮流，为每个场合找到完美搭配</p>
+            <a href="#collection" class="cta-button">立即选购</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="collection">
+            <h2>精选裙装系列</h2>
+            <div class="grid">
+                <div class="skirt-card">
+                    <div class="skirt-image">👗</div>
+                    <div class="skirt-info">
+                        <h3>经典A字裙</h3>
+                        <div class="price">$89</div>
+                        <button class="add-to-cart">加入购物车</button>
+                    </div>
+                </div>
+                <div class="skirt-card">
+                    <div class="skirt-image">🌸</div>
+                    <div class="skirt-info">
+                        <h3>碎花连衣裙</h3>
+                        <div class="price">$129</div>
+                        <button class="add-to-cart">加入购物车</button>
+                    </div>
+                </div>
+                <div class="skirt-card">
+                    <div class="skirt-image">✨</div>
+                    <div class="skirt-info">
+                        <h3>紧身包臀裙</h3>
+                        <div class="price">$69</div>
+                        <button class="add-to-cart">加入购物车</button>
+                    </div>
+                </div>
+                <div class="skirt-card">
+                    <div class="skirt-image">🎀</div>
+                    <div class="skirt-info">
+                        <h3>荷叶边短裙</h3>
+                        <div class="price">$59</div>
+                        <button class="add-to-cart">加入购物车</button>
+                    </div>
+                </div>
+                <div class="skirt-card">
+                    <div class="skirt-image">👠</div>
+                    <div class="skirt-info">
+                        <h3>高腰百褶裙</h3>
+                        <div class="price">$79</div>
+                        <button class="add-to-cart">加入购物车</button>
+                    </div>
+                </div>
+                <div class="skirt-card">
+                    <div class="skirt-image">💃</div>
+                    <div class="skirt-info">
+                        <h3>鱼尾晚礼服</h3>
+                        <div class="price">$199</div>
+                        <button class="add-to-cart">加入购物车</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <h2>为什么选择我们？</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div>🆓</div>
+                    <h3>免费送货</h3>
+                    <p>订单满$50免费送货</p>
+                </div>
+                <div class="feature">
+                    <div>↩️</div>
+                    <h3>30天退货</h3>
+                    <p>不满意随时退货</p>
+                </div>
+                <div class="feature">
+                    <div>🏆</div>
+                    <h3>品质保证</h3>
+                    <p>精选面料，精湛工艺</p>
+                </div>
+                <div class="feature">
+                    <div>🌍</div>
+                    <h3>全球配送</h3>
+                    <p>送达世界各地</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer id="contact">
+        <p>&copy; 2024 裙子汇 Skirt Collection. 保留所有权利。</p>
+        <p>邮箱: hello@skirtcollection.com | 电话: +1 (555) 123-4567</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const skirtName = this.parentElement.querySelector('h3').textContent;
+                const price = this.parentElement.querySelector('.price').textContent;
+                
+                // Simple alert (replace with real cart functionality)
+                alert(`已加入购物车: ${skirtName} ${price}`);
+                
+                // Visual feedback
+                this.textContent = '✓ 已加入';
+                this.style.background = '#28a745';
+                setTimeout(() => {
+                    this.textContent = '加入购物车';
+                    this.style.background = '#ff6b9d';
+                }, 2000);
+            });
+        });
+
+        // Mobile menu toggle (if needed)
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
+</body>
+</html>
